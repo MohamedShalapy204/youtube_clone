@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface SideBarState {
   isSidebarOpen: boolean;
+  selectedCategory: string;
 }
 
 const initialState: SideBarState = {
-  isSidebarOpen: false,
+  isSidebarOpen: true,
+  selectedCategory: 'New',
 };
 
 export const SideBarSlice = createSlice({
@@ -18,9 +20,12 @@ export const SideBarSlice = createSlice({
     setSidebarOpen: (state, action) => {
       state.isSidebarOpen = action.payload;
     },
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
   },
 });
 
-export const { toggleSidebar, setSidebarOpen } = SideBarSlice.actions;
+export const { toggleSidebar, setSidebarOpen, setSelectedCategory } = SideBarSlice.actions;
 
 export default SideBarSlice.reducer;

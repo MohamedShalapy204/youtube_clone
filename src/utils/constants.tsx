@@ -13,15 +13,17 @@ import {
     MdFitnessCenter,
     MdDeveloperMode
 } from 'react-icons/md';
-
+import { FaReact } from "react-icons/fa6";
+import { SiNextdotjs } from "react-icons/si";
+import { AiFillYoutube } from "react-icons/ai";
 export const logo = '/youtube_icon.png';
 
 export const categories = [
     { name: 'New', icon: <MdHome /> },
-    { name: 'JS Mastery', icon: <MdCode /> },
+    { name: 'JS Mastery', icon: <AiFillYoutube /> },
     { name: 'Coding', icon: <MdCode /> },
-    { name: 'ReactJS', icon: <MdCode /> },
-    { name: 'NextJS', icon: <MdCode /> },
+    { name: 'ReactJS', icon: <FaReact /> },
+    { name: 'NextJS', icon: <SiNextdotjs /> },
     { name: 'Music', icon: <MdMusicNote /> },
     { name: 'Education', icon: <MdSchool /> },
     { name: 'Podcast', icon: <MdGraphicEq /> },

@@ -23,6 +23,7 @@ const ThemeController = () => {
                         className="theme-controller w-full btn btn-sm btn-block btn-ghost justify-start"
                         aria-label="Green"
                         value="green"
+                        defaultChecked
                     />
                 </li>
                 <li>

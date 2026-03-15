@@ -3,6 +3,7 @@ import {
   Feed,
   VideoDetails,
   ChannelDetails,
+  PlaylistDetails,
   SearchFeed,
   Navbar,
   Sidebar
@@ -21,6 +22,7 @@ const App = () => {
               <Route path="/" element={<Feed />} />
               <Route path="/video/:id" element={<VideoDetails />} />
               <Route path="/channel/:id" element={<ChannelDetails />} />
+              <Route path="/playlist/:id" element={<PlaylistDetails />} />
               <Route path="/search/:searchQuery" element={<SearchFeed />} />
             </Routes>
           </main>
