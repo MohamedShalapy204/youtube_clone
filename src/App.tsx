@@ -7,14 +7,18 @@ import {
   SearchFeed,
   Navbar,
   Footer,
-  BottomNav
+  BottomNav,
+  Explore,
+  Subscriptions,
+  Library,
+  Create
 } from "./components"
 
 const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="bg-black min-h-screen flex flex-col overflow-x-hidden">
+      <div className="bg-black min-h-screen flex flex-col overflow-x-hidden pb-24">
         <Navbar />
         <main className="flex-1 transition-all duration-300 min-w-0 overflow-x-hidden">
           <Routes>
@@ -23,6 +27,10 @@ const App = () => {
             <Route path="/channel/:id" element={<ChannelDetails />} />
             <Route path="/playlist/:id" element={<PlaylistDetails />} />
             <Route path="/search/:searchQuery" element={<SearchFeed />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/subscriptions" element={<Subscriptions />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/create" element={<Create />} />
           </Routes>
         </main>
         <Footer />

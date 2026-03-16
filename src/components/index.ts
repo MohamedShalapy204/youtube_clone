@@ -7,3 +7,7 @@ export { default as PlaylistDetails } from './PlaylistDetails';
 export { default as Sidebar } from './Sidebar';
 export { default as Footer } from './Footer';
 export { default as BottomNav } from './BottomNav';
+export { default as Explore } from './Explore/Explore';
+export { default as Subscriptions } from './Subscriptions/Subscriptions';
+export { default as Library } from './Library/Library';
+export { default as Create } from './Create/Create';

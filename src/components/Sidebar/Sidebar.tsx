@@ -56,7 +56,7 @@ const Sidebar = () => {
             initial={false}
             animate={isSidebarOpen ? "open" : "closed"}
             variants={sidebarVariants}
-            className="sticky top-[72px] h-[calc(100vh-72px)] z-40 glass-v4 border-r overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 px-3"
+            className="hidden lg:block sticky top-[64px] h-[calc(100vh-64px)] z-40 glass-v4 border-r overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 px-3"
         >
             <motion.div
                 className="flex flex-col gap-2 py-4"
@@ -113,7 +113,7 @@ const Sidebar = () => {
                             exit={{ opacity: 0 }}
                             className="px-4 text-xs text-base-content/30"
                         >
-                            <p>© 2024 YouTube V4 Clone</p>
+                            <p>© 2026 YouTube Clone</p>
                         </motion.div>
                     )}
                 </AnimatePresence>

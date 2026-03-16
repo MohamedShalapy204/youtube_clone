@@ -20,13 +20,13 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="sticky top-0 z-50 flex items-center justify-between p-4 glass-v4 border-b">
+        <nav className="sticky top-0 z-50 flex items-center justify-between px-4 h-16 glass-v4 border-b">
             {/* Left Section: Menu & Logo */}
             <div className="flex items-center gap-4">
                 {pathname === "/" && (
                     <button
                         onClick={() => dispatch(toggleSidebar())}
-                        className="btn btn-ghost btn-circle text-base-content"
+                        className="hidden lg:block btn btn-ghost btn-circle text-base-content"
                     >
                         <MdMenu size={26} />
                     </button>
