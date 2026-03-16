@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { fetchFromAPI } from "../../utils/fetchFromApi";
 import VideoCard from "../Feed/VideoCard";
-// import Comments from "./Comments";
+import Comments from "./Comments";
 import { type Item } from "../../types";
 
 const VideoDetails = () => {
@@ -137,9 +137,11 @@ const VideoDetails = () => {
                                     {showFullDescription ? "Show less" : "...more"}
                                 </button>
                             </div>
+
+                            {/* Comments Section */}
+                            <Comments videoId={id} />
                         </motion.div>
 
-                        {/* {id && <Comments videoId={id} />} */}
                     </div>
                 </div>
 

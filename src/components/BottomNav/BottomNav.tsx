@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { MdHome, MdExplore, MdSubscriptions, MdVideoLibrary } from "react-icons/md";
+import { MdHome } from "react-icons/md";
 import { motion } from "motion/react";
 
 const BottomNav = () => {
@@ -7,9 +7,6 @@ const BottomNav = () => {
 
     const navItems = [
         { icon: <MdHome size={24} />, label: "Home", path: "/" },
-        { icon: <MdExplore size={24} />, label: "Explore", path: "/explore" },
-        { icon: <MdSubscriptions size={24} />, label: "Subs", path: "/subscriptions" },
-        { icon: <MdVideoLibrary size={24} />, label: "Library", path: "/library" },
     ];
 
     return (

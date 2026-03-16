@@ -1,17 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { fetchFromAPI } from "../../utils/fetchFromApi";
-import ItemsLayout from "../Feed/ItemsLayout";
 import { motion } from "motion/react";
+import { usePlaylist } from "../../hooks/usePlaylist";
+import ItemsLayout from "../Feed/ItemsLayout";
 
 const PlaylistDetails = () => {
     const { id } = useParams();
-
-    const { data, isLoading, isError, error } = useQuery({
-        queryKey: ['playlist', id],
-        queryFn: () => fetchFromAPI(`playlistItems?part=snippet&playlistId=${id}&maxResults=50`),
-        staleTime: 1000 * 60 * 5,
-    });
+    const { playlist, items, isLoading, isError, error } = usePlaylist(id);
 
     if (isError) {
         return (
@@ -26,10 +20,20 @@ const PlaylistDetails = () => {
 
     return (
         <div className="flex flex-col gap-6 p-4">
-            <header className="px-2">
+            <header className="flex flex-col gap-2 px-2">
                 <h1 className="text-3xl font-bold text-base-content">
-                    <span className="text-primary">Playlist</span> Videos
+                    {playlist?.snippet?.title || "Playlist Videos"}
                 </h1>
+                {playlist?.snippet?.channelTitle && (
+                    <p className="text-sm font-medium text-base-content/60">
+                        Channel: <span className="text-primary">{playlist.snippet.channelTitle}</span>
+                    </p>
+                )}
+                {playlist?.snippet?.description && (
+                    <p className="mt-2 max-w-3xl text-sm text-base-content/70 line-clamp-3">
+                        {playlist.snippet.description}
+                    </p>
+                )}
             </header>
 
             {isLoading ? (
@@ -53,7 +57,10 @@ const PlaylistDetails = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <ItemsLayout items={data?.items || []} />
+                    <ItemsLayout items={items?.map(item => ({
+                        id: { videoId: item.snippet.resourceId.videoId },
+                        snippet: item.snippet
+                    })) || []} />
                 </motion.div>
             )}
         </div>

@@ -78,3 +78,78 @@ export interface CommentsResponse {
     nextPageToken?: string;
     items: CommentThread[];
 }
+
+export interface PlaylistSnippet {
+    publishedAt: string;
+    channelId: string;
+    title: string;
+    description: string;
+    thumbnails: {
+        default: { url: string; width: number; height: number };
+        medium: { url: string; width: number; height: number };
+        high: { url: string; width: number; height: number };
+        standard?: { url: string; width: number; height: number };
+        maxres?: { url: string; width: number; height: number };
+    };
+    channelTitle: string;
+    localized: {
+        title: string;
+        description: string;
+    };
+}
+
+export interface Playlist {
+    kind: string;
+    etag: string;
+    id: string;
+    snippet: PlaylistSnippet;
+    contentDetails?: {
+        itemCount: number;
+    };
+}
+
+export interface PlaylistItemSnippet {
+    publishedAt: string;
+    channelId: string;
+    title: string;
+    description: string;
+    thumbnails: {
+        default: { url: string; width: number; height: number };
+        medium: { url: string; width: number; height: number };
+        high: { url: string; width: number; height: number };
+        standard?: { url: string; width: number; height: number };
+        maxres?: { url: string; width: number; height: number };
+    };
+    channelTitle: string;
+    playlistId: string;
+    position: number;
+    resourceId: {
+        kind: string;
+        videoId: string;
+    };
+}
+
+export interface PlaylistItem {
+    kind: string;
+    etag: string;
+    id: string;
+    snippet: PlaylistItemSnippet;
+}
+
+export interface PlaylistItemsResponse {
+    kind: string;
+    etag: string;
+    nextPageToken?: string;
+    prevPageToken?: string;
+    pageInfo: {
+        totalResults: number;
+        resultsPerPage: number;
+    };
+    items: PlaylistItem[];
+}
+
+export interface PlaylistsResponse {
+    kind: string;
+    etag: string;
+    items: Playlist[];
+}
