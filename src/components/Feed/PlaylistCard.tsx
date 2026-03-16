@@ -43,6 +43,9 @@ const PlaylistCard = ({ playlist: { id: { playlistId }, snippet } }: PlaylistCar
                     src={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
                     alt={snippet?.title}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    onError={(e) => {
+                        (e.target as HTMLImageElement).src = demoThumbnailUrl;
+                    }}
                 />
 
                 {/* Playlist overlay */}

@@ -5,3 +5,5 @@ export { default as SearchFeed } from './SearchFeed';
 export { default as ChannelDetails } from './ChannelDetails';
 export { default as PlaylistDetails } from './PlaylistDetails';
 export { default as Sidebar } from './Sidebar';
+export { default as Footer } from './Footer';
+export { default as BottomNav } from './BottomNav';

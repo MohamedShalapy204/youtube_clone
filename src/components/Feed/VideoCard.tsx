@@ -3,23 +3,10 @@ import { MdCheckCircle } from "react-icons/md";
 import { demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle, demoThumbnailUrl } from "../../utils/constants";
 import { motion } from "motion/react";
 
+import { type Item } from "../../types";
+
 interface VideoCardProps {
-    video: {
-        id: {
-            videoId?: string;
-        };
-        snippet: {
-            title: string;
-            thumbnails: {
-                high: {
-                    url: string;
-                };
-            };
-            channelId: string;
-            channelTitle: string;
-            publishedAt: string;
-        };
-    };
+    video: Item;
 }
 
 const VideoCard = ({ video: { id: { videoId }, snippet } }: VideoCardProps) => {
@@ -43,6 +30,9 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }: VideoCardProps) => {
                     src={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
                     alt={snippet?.title}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    onError={(e) => {
+                        (e.target as HTMLImageElement).src = demoThumbnailUrl;
+                    }}
                 />
                 <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </Link>
