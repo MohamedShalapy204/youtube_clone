@@ -11,13 +11,16 @@ import {
   Explore,
   Themes,
   Library,
-  Create
+  PlaylistPlayer,
+  Create,
+  ScrollToTop
 } from "./components"
 
 const App = () => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="bg-black min-h-screen flex flex-col overflow-x-hidden pb-24">
         <Navbar />
         <main className="flex-1 transition-all duration-300 min-w-0 overflow-x-hidden">
@@ -26,6 +29,7 @@ const App = () => {
             <Route path="/video/:id" element={<VideoDetails />} />
             <Route path="/channel/:id" element={<ChannelDetails />} />
             <Route path="/playlist/:id" element={<PlaylistDetails />} />
+            <Route path="/video/:videoId/playlist/:playlistId" element={<PlaylistPlayer />} />
             <Route path="/search/:searchQuery" element={<SearchFeed />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/themes" element={<Themes />} />

@@ -10,4 +10,6 @@ export { default as BottomNav } from './BottomNav';
 export { default as Explore } from './Explore/Explore';
 export { default as Themes } from './Themes/Themes';
 export { default as Library } from './Library/Library';
+export { default as PlaylistPlayer } from './PlaylistPlayer/PlaylistPlayer';
 export { default as Create } from './Create/Create';
+export { default as ScrollToTop } from './ScrollToTop';

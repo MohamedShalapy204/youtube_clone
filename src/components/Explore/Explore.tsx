@@ -3,7 +3,7 @@ import { fetchFromAPI } from "../../utils/fetchFromApi";
 import ItemsLayout from "../Feed/ItemsLayout";
 import Sidebar from "../Sidebar";
 import { motion } from "motion/react";
-import { MdTrendingUp, MdMusicNote, MdSportsEsports, MdMovie, MdLiveTv, MdCheckroom, MdExplore } from "react-icons/md";
+import { MdTrendingUp, MdMusicNote, MdSportsEsports, MdMovie, MdLiveTv, MdCheckroom, MdExplore, MdPlaylistPlay } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSelectedCategory } from "../../Redux/features/sideBar/sideBarSlice";
@@ -16,6 +16,7 @@ const exploreCategories = [
     { name: "Movies", icon: <MdMovie />, color: "from-amber-400/20 to-orange-500/20", textColor: "text-amber-400" },
     { name: "Live", icon: <MdLiveTv />, color: "from-red-600/20 to-red-800/20", textColor: "text-red-500" },
     { name: "Fashion", icon: <MdCheckroom />, color: "from-indigo-500/20 to-purple-600/20", textColor: "text-indigo-400" },
+    { name: "Playlists", icon: <MdPlaylistPlay />, color: "from-emerald-400/20 to-emerald-600/20", textColor: "text-primary" },
 ];
 
 const Explore = () => {

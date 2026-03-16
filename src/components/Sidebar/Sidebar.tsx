@@ -3,11 +3,17 @@ import { type RootState, type AppDispatch } from "../../Redux/store";
 import { setSelectedCategory } from "../../Redux/features/sideBar/sideBarSlice";
 import { categories } from "../../utils/constants";
 import { motion, AnimatePresence, type Variants } from "motion/react";
+import { useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+    const { pathname } = useLocation();
+
     const dispatch = useDispatch<AppDispatch>();
     const isSidebarOpen = useSelector((state: RootState) => state.sidebar.isSidebarOpen);
     const selectedCategory = useSelector((state: RootState) => state.sidebar.selectedCategory);
+
+    // Only show sidebar on the home page (root path)
+    if (pathname !== '/') return null;
 
     const containerVariants: Variants = {
         hidden: { opacity: 0 },

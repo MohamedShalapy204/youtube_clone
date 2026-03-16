@@ -12,7 +12,8 @@ import {
     MdTheaterComedy,
     MdFitnessCenter,
     MdDeveloperMode,
-    MdWhatshot
+    MdWhatshot,
+    MdPlaylistPlay
 } from 'react-icons/md';
 import { FaReact } from "react-icons/fa6";
 import { SiNextdotjs } from "react-icons/si";
@@ -22,6 +23,7 @@ export const logo = '/youtube_icon.png';
 export const categories = [
     { name: 'New', icon: <MdHome /> },
     { name: 'Trending', icon: <MdWhatshot /> },
+    { name: 'Playlists', icon: <MdPlaylistPlay /> },
     { name: 'JS Mastery', icon: <AiFillYoutube /> },
     { name: 'Coding', icon: <MdCode /> },
     { name: 'ReactJS', icon: <FaReact /> },

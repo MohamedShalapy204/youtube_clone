@@ -11,7 +11,10 @@ const Feed = () => {
 
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['videos', selectedCategory],
-        queryFn: () => fetchFromAPI(`search?part=snippet&q=${selectedCategory}`),
+        queryFn: () => {
+            const queryType = selectedCategory === 'Playlists' ? '&type=playlist' : '';
+            return fetchFromAPI(`search?part=snippet&q=${selectedCategory}${queryType}`);
+        },
         staleTime: 1000 * 60 * 5,
     });
 
