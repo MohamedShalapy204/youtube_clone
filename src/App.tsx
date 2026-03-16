@@ -9,7 +9,7 @@ import {
   Footer,
   BottomNav,
   Explore,
-  Subscriptions,
+  Themes,
   Library,
   Create
 } from "./components"
@@ -28,7 +28,7 @@ const App = () => {
             <Route path="/playlist/:id" element={<PlaylistDetails />} />
             <Route path="/search/:searchQuery" element={<SearchFeed />} />
             <Route path="/explore" element={<Explore />} />
-            <Route path="/subscriptions" element={<Subscriptions />} />
+            <Route path="/themes" element={<Themes />} />
             <Route path="/library" element={<Library />} />
             <Route path="/create" element={<Create />} />
           </Routes>

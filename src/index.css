@@ -1,13 +1,18 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "daisyui" {
-  themes: green --default, red, purple, blue, gold;
+  themes:
+    green --default,
+    red,
+    purple,
+    blue,
+    gold;
 }
 
 @plugin "daisyui/theme" {
-  name: "green";
+  name: 'green';
   prefersdark: true;
-  color-scheme: "dark";
+  color-scheme: 'dark';
   --color-base-100: oklch(12% 0.01 160);
   --color-base-200: oklch(16% 0.015 165);
   --color-base-300: oklch(20% 0.02 170);
@@ -39,8 +44,8 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "red";
-  color-scheme: "dark";
+  name: 'red';
+  color-scheme: 'dark';
   --color-base-100: oklch(10% 0.015 15);
   --color-base-200: oklch(14% 0.02 20);
   --color-base-300: oklch(18% 0.025 25);
@@ -72,8 +77,8 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "purple";
-  color-scheme: "dark";
+  name: 'purple';
+  color-scheme: 'dark';
   --color-base-100: oklch(13% 0.03 270);
   --color-base-200: oklch(17% 0.04 275);
   --color-base-300: oklch(21% 0.05 280);
@@ -105,8 +110,8 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "blue";
-  color-scheme: "dark";
+  name: 'blue';
+  color-scheme: 'dark';
   --color-base-100: oklch(15% 0.02 240);
   --color-base-200: oklch(19% 0.025 245);
   --color-base-300: oklch(23% 0.03 250);
@@ -138,8 +143,8 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "gold";
-  color-scheme: "dark";
+  name: 'gold';
+  color-scheme: 'dark';
   --color-base-100: oklch(12% 0.015 60);
   --color-base-200: oklch(16% 0.02 65);
   --color-base-300: oklch(20% 0.025 70);
@@ -174,7 +179,29 @@
 @layer utilities {
   .glass-v4 {
     @apply backdrop-blur-xl bg-base-100/60 border-white/10;
+    padding: calc(1rem * var(--spacing-multiplier, 1));
+    gap: calc(1rem * var(--spacing-multiplier, 1));
+    box-shadow: 0 calc(10px * var(--depth, 1)) calc(30px * var(--depth, 1)) rgba(0, 0, 0, calc(0.2 * var(--depth, 1)));
+    transition: all var(--speed, 0.3s) ease-in-out;
   }
+}
+
+/* Global Transition Override */
+* {
+  transition-duration: var(--speed, 0.3s) !important;
+}
+
+/* Glow Effect for Primary Elements */
+.text-primary {
+  text-shadow: 0 0 calc(10px * var(--glow-intensity, 1)) var(--color-primary);
+}
+
+.bg-primary {
+  box-shadow: 0 0 calc(20px * var(--glow-intensity, 1)) var(--color-primary);
+}
+
+.btn-primary {
+  box-shadow: 0 0 calc(15px * var(--glow-intensity, 1)) var(--color-primary);
 }
 
 /* Custom Scrollbar styling */
@@ -190,6 +217,7 @@
   ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+    border: var(--border, 1px) solid transparent;
   }
 
   ::-webkit-scrollbar-thumb:hover {

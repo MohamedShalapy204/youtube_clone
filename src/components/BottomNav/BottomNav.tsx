@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { MdHome, MdExplore, MdSubscriptions, MdVideoLibrary, MdAddCircleOutline } from "react-icons/md";
+import { MdHome, MdExplore, MdColorLens, MdVideoLibrary, MdAddCircleOutline } from "react-icons/md";
 import { motion, AnimatePresence } from "motion/react";
 
 const BottomNav = () => {
@@ -9,13 +9,13 @@ const BottomNav = () => {
         { icon: <MdHome size={24} />, label: "Home", path: "/" },
         { icon: <MdExplore size={24} />, label: "Explore", path: "/explore" },
         { icon: <MdAddCircleOutline size={32} />, label: "", path: "/create", isCreate: true },
-        { icon: <MdSubscriptions size={24} />, label: "Subs", path: "/subscriptions", badge: 5 },
+        { icon: <MdColorLens size={24} />, label: "Themes", path: "/themes" },
         { icon: <MdVideoLibrary size={24} />, label: "Library", path: "/library", badge: "new" },
     ];
 
     return (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-lg">
-            <nav className="glass-v4 border border-white/10 rounded-3xl p-2 px-4 flex justify-around items-center shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
+            <nav className="rounded-box glass-v4 border border-white/10 rounded-3xl p-2 px-4 flex justify-around items-center shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
                 {navItems.map((item) => {
                     const isActive = pathname === item.path;
 
@@ -39,14 +39,14 @@ const BottomNav = () => {
 
                                     {/* Badge System */}
                                     <AnimatePresence>
-                                        {item.badge && (
+                                        {(item as any).badge && (
                                             <motion.span
                                                 initial={{ scale: 0, opacity: 0 }}
                                                 animate={{ scale: 1, opacity: 1 }}
                                                 className="absolute -top-1 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error text-[8px] font-bold text-error-content border-2 border-base-100"
                                             >
-                                                {item.badge === "new" ? "" : item.badge}
-                                                {item.badge === "new" && (
+                                                {(item as any).badge === "new" ? "" : (item as any).badge}
+                                                {(item as any).badge === "new" && (
                                                     <span className="absolute inset-0 rounded-full bg-error animate-ping" />
                                                 )}
                                             </motion.span>
@@ -54,7 +54,6 @@ const BottomNav = () => {
                                     </AnimatePresence>
                                 </div>
 
-                                {/* Dynamic Label - Only shows label for active or specific items if desired */}
                                 {item.label && (
                                     <motion.span
                                         initial={false}
