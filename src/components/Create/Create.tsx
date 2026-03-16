@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
     MdFileUpload,
@@ -7,13 +7,21 @@ import {
     MdVideoCall,
     MdCloudUpload,
     MdInfoOutline,
-    MdHistory
+    MdHistory,
+    MdClose
 } from "react-icons/md";
 import Sidebar from "../Sidebar";
 
 const Create = () => {
     const [selectedTab, setSelectedTab] = useState<"upload" | "live" | "post">("upload");
     const [dragActive, setDragActive] = useState(false);
+    const [showNotification, setShowNotification] = useState(false);
+
+    useEffect(() => {
+        // Delay notification slightly for better UX
+        const timer = setTimeout(() => setShowNotification(true), 800);
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleDrag = (e: React.DragEvent) => {
         e.preventDefault();
@@ -200,6 +208,35 @@ const Create = () => {
                         </AnimatePresence>
                     </div>
                 </div>
+                {/* Notification Toast */}
+                <AnimatePresence>
+                    {showNotification && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -100, x: "-50%" }}
+                            animate={{ opacity: 1, y: 0, x: "-50%" }}
+                            exit={{ opacity: 0, y: -100, x: "-50%" }}
+                            className="fixed top-8 left-1/2 -translate-x-1/2 z-[9999] pointer-events-none w-full max-w-fit px-4"
+                        >
+                            <div className="glass-v4 border border-primary/40 p-4 px-6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center gap-6 pointer-events-auto backdrop-blur-2xl bg-black/40">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_var(--color-primary)]" />
+                                    <p className="text-white text-sm font-bold tracking-wide">
+                                        <span className="text-primary uppercase mr-2">System Notice:</span>
+                                        This module is currently in <span className="text-primary italic">Beta Design Mode</span>. Actions are not persisted.
+                                    </p>
+                                </div>
+
+                                <button
+                                    onClick={() => setShowNotification(false)}
+                                    className="group flex items-center justify-center w-8 h-8 rounded-full hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/5 active:scale-90"
+                                    aria-label="Close notification"
+                                >
+                                    <MdClose size={20} className="text-white/40 group-hover:text-white group-hover:rotate-90 transition-all" />
+                                </button>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </div>
     );
